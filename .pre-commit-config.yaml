@@ -1,7 +1,41 @@
 repos:
-  # Using this mirror lets us use mypyc-compiled black, which is about 2x faster
+  # BLACK
   - repo: https://github.com/psf/black-pre-commit-mirror
     rev: 23.9.1
     hooks:
       - id: black 
         language_version: /opt/conda/bin/python3.11
+    # FLAKE8
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.0.0  # pick a git hash / tag to point to
+    hooks:
+      - id: flake8
+    # ISORT
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        name: isort (python)
+    # MYPY
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 'v1.5.0'
+    hooks:
+      - id: mypy
+        args: [--strict, --ignore-missing-imports]
+    # NBSTRIPOUT
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.6.1
+    hooks:
+      - id: nbstripout
+  - repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.7.0
+    hooks:
+     - id: nbqa-black # BLACK FOR NOTEBOOKS
+       language_version: /opt/conda/bin/python3.11
+     - id: nbqa-flake8 # FLAKE8 FOR NOTEBOOKS
+       args: [--ignore=E402]
+     - id: nbqa-isort # ISORT FOR NOTEBOOKS
+       args: [--profile=black]
+     - id: nbqa-mypy # MYPY FOR NOTEBOOKS
+       args: [--strict, --ignore-missing-imports]
+       
