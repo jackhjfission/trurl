@@ -8,3 +8,4 @@ services:
       - ../.:/home/jovyan/work
     environment:
       - CONTAINER_NAME=${IMAGE_NAME}:${IMAGE_VERSION}
+      - TRURL_CONFIG_PATH=/home/jovyan/work/pyproject.toml
