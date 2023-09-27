@@ -17,6 +17,8 @@ RUN chmod +x /on-start-image.sh
 USER ${NB_UID}
 
 # install precommit and set up hooks
+# this makes a throw-away git repo to encourage pre-commit
+# to install hooks
 RUN mkdir fake-repo
 COPY .pre-commit-config.yaml fake-repo
 RUN mamba install -y -c conda-forge pre-commit && \
