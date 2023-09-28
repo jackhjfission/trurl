@@ -3,9 +3,9 @@
   "dockerComposeFile": "compose.yaml",
   "service": "trurl-dev",
   "workspaceFolder": "/home/jovyan/work",
-"shutdownAction": "stopCompose",
-"customizations": {
-	"vscode": {
+  "shutdownAction": "stopCompose",
+  "customizations": {
+  	"vscode": {
 		"extensions": [
 			"ms-python.isort",
 			"ms-python.vscode-pylance",
@@ -18,5 +18,5 @@
 			"quarto.quarto"
 		]
 	}
-}
+  }
 }
