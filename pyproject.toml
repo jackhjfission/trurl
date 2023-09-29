@@ -2,20 +2,15 @@
 profile = "black"
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
-[tool.hatch.version]
-path = "trurl/__init__.py"
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
 
 [project.scripts]
 trurl = "trurl.cli:main"
 
 [project]
 name = "trurl"
-dynamic = [
-  "version",
-]
+version = "v0.0.0",
 description = "Another python package for traceable and reproducible data science."
 authors = [
   { name = "Jack Coggins", email = "jackhjfission@gmail.com" },
@@ -29,7 +24,7 @@ classifiers = [
 ]
 requires-python = ">=3.7"
 dependencies = [
-  "click>=8",
+  "click==8.*",
 ]
 
 [project.urls]
