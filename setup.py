@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="trurl",
-    version="v0.0.0",
+    version="v0.1.2",
     packages=find_packages(
         include=["trurl*"],
         exclude=["trurl.tests"],

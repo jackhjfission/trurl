@@ -13,7 +13,7 @@ trurl = "trurl.cli:main"
 
 [project]
 name = "trurl"
-version = "v0.0.0"
+version = "v0.1.2"
 description = "Another python package for traceable and reproducible data science."
 authors = [
   { name = "Jack Coggins", email = "jackhjfission@gmail.com" },
