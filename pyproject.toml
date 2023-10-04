@@ -1,6 +1,9 @@
 [tool.isort]
 profile = "black"
 
+[tool.trurl]
+environment-file = "/home/jovyan/work/.devcontainer/base.yaml"
+
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
@@ -26,7 +29,6 @@ requires-python = ">=3.7"
 dependencies = [
   "click==8.*",
 ]
-environment-file = "/home/jovyan/work/.devcontainer/base.yaml"
 
 [project.urls]
 "Homepage" = "https://github.com/jackhjfission/trurl"

@@ -11,7 +11,7 @@ def conda_export() -> None:
         data = tomllib.load(f)
 
     # Get location of file
-    saved_environment_file_path = Path(data["project"]["environment-file"])
+    saved_environment_file_path = Path(data["tool"]["trurl"]["environment-file"])
 
     # raise error if there is no file
     if not saved_environment_file_path.exists():
