@@ -1,0 +1,7 @@
+-   id: conda-export
+    name: Conda export
+    description: This hook compares your conda environment export to a saved version.
+    entry: trurl conda-export
+    language: python
+    always-run: true
+    pass-filenames: false
