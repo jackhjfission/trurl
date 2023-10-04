@@ -1,12 +1,12 @@
-
 import subprocess
 import tempfile
 import tomllib
 from hashlib import md5
 from pathlib import Path
 
+
 def conda_export() -> None:
-    ""
+    """"""
     with Path("pyproject.toml").open("rb") as f:
         data = tomllib.load(f)
 
