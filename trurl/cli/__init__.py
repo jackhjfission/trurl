@@ -2,7 +2,7 @@ __version__ = "v0.1.2"
 
 import click
 
-from .environment import conda_export, conda_update, conda_compare
+from .environment import conda_compare, conda_export, conda_update
 
 
 @click.group()
