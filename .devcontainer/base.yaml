@@ -358,5 +358,5 @@ dependencies:
   - zstandard=0.19.0=py311hd4cff14_0
   - zstd=1.5.5=hfc55251_0
   - pip:
-      - trurl==0.0.0
+      - trurl==0.2.0
 prefix: /opt/conda
