@@ -1,7 +1,6 @@
-__version__ = "v0.1.2"
-
 import click
 
+from .. import __version__
 from .environment import conda_compare, conda_export, conda_update
 
 
