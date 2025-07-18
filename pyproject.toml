@@ -2,8 +2,8 @@
 profile = "black"
 
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
 
 [project.scripts]
 trurl = "trurl.cli:main"
