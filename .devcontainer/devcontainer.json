@@ -22,5 +22,11 @@
 			"ms-python.python"
 		]
 	}
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/home/klapaucius/.ssh,type=bind,consistency=cached"
+  ],
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
   }
 }
