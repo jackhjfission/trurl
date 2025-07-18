@@ -1,9 +1,6 @@
 [tool.isort]
 profile = "black"
 
-[tool.trurl]
-environment-file = "/home/jovyan/work/.devcontainer/base.yaml"
-
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
@@ -25,10 +22,13 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-requires-python = ">=3.7"
+requires-python = ">=3.12"
 dependencies = [
   "click==8.*",
 ]
 
 [project.urls]
 "Homepage" = "https://github.com/jackhjfission/trurl"
+
+[tool.mypy]
+python_executable = "/home/klapaucius/.cache/pypoetry/virtualenvs/trurl-Svf77lXO-py3.12/bin/python"

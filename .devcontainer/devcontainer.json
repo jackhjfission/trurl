@@ -1,9 +1,14 @@
 {
   "name": "trurl",
-  "dockerComposeFile": "compose.yaml",
-  "service": "trurl-dev",
-  "workspaceFolder": "/home/jovyan/work",
-  "shutdownAction": "stopCompose",
+  "image": "trurl:v0.0.0",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/home/klapaucius/workspace,type=bind,consistency=cached",
+  "workspaceFolder": "/home/klapaucius/workspace",
+  "postStartCommand": "/home/klapaucius/on-start-container.sh",
+  "runArgs": [
+	"--env-file", "${localWorkspaceFolder}/.devcontainer/.env",
+	"--memory=8g",
+	"--memory-swap=8g"
+  ],
   "customizations": {
   	"vscode": {
 		"extensions": [
@@ -14,8 +19,7 @@
 			"ms-toolsai.jupyter-keymap",
 			"ms-toolsai.vscode-jupyter-cell-tags",
 			"ms-toolsai.jupyter",
-			"ms-python.python",
-			"quarto.quarto"
+			"ms-python.python"
 		]
 	}
   }
