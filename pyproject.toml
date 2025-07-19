@@ -17,6 +17,10 @@ dependencies = [
   "click==8.*",
 ]
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.4.1"
+ipykernel = "^6.29.5"
+
 [project.scripts]
 trurl = "trurl.cli:main"
 
@@ -32,10 +36,6 @@ profile = "black"
 
 [tool.pytest.ini_options]
 testpaths = "tests"
-
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.4.1"
 
 [build-system]
 requires = ["poetry-core"]
