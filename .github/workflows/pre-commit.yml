@@ -46,13 +46,23 @@ jobs:
         path: ~/.cache/pre-commit
         key: pre-commit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml') }}
 
-    - name: Install pre-commit
+    - name: Install pre-commit with pipx
       run: |
-        poetry run pip install pre-commit
+        pipx install pre-commit
 
-    - name: Run pre-commit hooks
+    - name: Get Poetry Python interpreter
+      id: poetry-python
       run: |
-        poetry run pre-commit run --all-files --show-diff-on-failure
+        PYTHON_PATH=$(poetry run which python)
+        echo "python-path=$PYTHON_PATH" >> $GITHUB_OUTPUT
+
+    - name: Run pre-commit hooks (except mypy)
+      run: |
+        SKIP=mypy pre-commit run --all-files --show-diff-on-failure
+
+    - name: Run mypy with correct interpreter
+      run: |
+        poetry run mypy --python-executable="${{ steps.poetry-python.outputs.python-path }}" --strict trurl/
 
     - name: Check if pre-commit hooks modified files
       run: |
