@@ -8,3 +8,5 @@ cd /home/klapaucius/workspace && poetry install --all-extras --all-groups
 
 # start poetry environment when starting a terminal
 echo "cd /home/${USER_NAME}/workspace && eval $(poetry env activate)" >> /home/${USER_NAME}/.bashrc
+
+sleep 5
