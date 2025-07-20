@@ -1,0 +1,78 @@
+name: Pre-commit Checks
+
+on:
+  pull_request:
+    branches: [ main, master ]
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
+      with:
+        version: latest
+        virtualenvs-create: true
+        virtualenvs-in-project: true
+        installer-parallel: true
+
+    - name: Load cached venv
+      id: cached-poetry-dependencies
+      uses: actions/cache@v3
+      with:
+        path: .venv
+        key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+
+    - name: Install dependencies
+      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      run: |
+        poetry install --with dev
+
+    - name: Cache pre-commit environments
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pre-commit
+        key: pre-commit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml') }}
+
+    - name: Install pre-commit with pipx
+      run: |
+        pipx install pre-commit
+
+    - name: Install mypy with pipx
+      run: |
+        pipx install mypy
+
+    - name: Get Poetry Python interpreter
+      id: poetry-python
+      run: |
+        PYTHON_PATH=$(poetry run which python)
+        echo "python-path=$PYTHON_PATH" >> $GITHUB_OUTPUT
+
+    - name: Run pre-commit hooks (except mypy)
+      run: |
+        SKIP=mypy pre-commit run --all-files --show-diff-on-failure
+
+    - name: Run mypy with correct interpreter
+      run: |
+        mypy --python-executable="${{ steps.poetry-python.outputs.python-path }}" --strict trurl/
+
+    - name: Check if pre-commit hooks modified files
+      run: |
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "Pre-commit hooks modified files. Please run 'pre-commit run --all-files' locally and commit the changes."
+          git status
+          git diff
+          exit 1
+        fi

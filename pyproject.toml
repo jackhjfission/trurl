@@ -23,9 +23,6 @@ trurl = "trurl.cli:main"
 [project.urls]
 "Homepage" = "https://github.com/jackhjfission/trurl"
 
-[tool.mypy]
-python_executable = "/home/klapaucius/.cache/pypoetry/virtualenvs/trurl-Svf77lXO-py3.12/bin/python"
-
 [tool.isort]
 profile = "black"
 
@@ -35,6 +32,10 @@ profile = "black"
 
 [tool.pytest.ini_options]
 testpaths = "tests"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.4.1"
 
 [build-system]
 requires = ["poetry-core"]

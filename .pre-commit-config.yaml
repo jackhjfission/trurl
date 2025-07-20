@@ -40,10 +40,7 @@ repos:
     rev: 1.9.1
     hooks:
      - id: nbqa-black # BLACK FOR NOTEBOOKS
-       additional_depedencies: [black==25.1.0]
      - id: nbqa-ruff # RUFF FOR NOTEBOOKS
        args: [--ignore=E402, --fix, --target-version=py312]
-       additional_depedencies: [ruff==v0.12.4]
      - id: nbqa-isort # ISORT FOR NOTEBOOKS
        args: [--profile=black]
-       additional_depedencies: [isort==6.0.1]

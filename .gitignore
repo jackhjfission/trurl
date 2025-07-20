@@ -9,3 +9,6 @@ __pycache__/
 *.xlsx*
 *.csv
 *.html
+
+# mypy python executable config
+mypy.ini
