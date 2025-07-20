@@ -2,10 +2,8 @@ services:
   trurl-dev:
     image:
       ${IMAGE_NAME}:${IMAGE_VERSION}
-    ports:
-      - 8888:8888
-    volumes:
-      - ../.:/home/jovyan/work
-    environment:
-      - CONTAINER_NAME=${IMAGE_NAME}:${IMAGE_VERSION}
-      - TRURL_CONFIG_PATH=/home/jovyan/work/pyproject.toml
+    build:
+      context: ../
+      dockerfile: dev.Dockerfile
+      args:
+        - USER_NAME=$USER_NAME

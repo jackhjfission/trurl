@@ -1,7 +1,0 @@
--   id: conda-compare
-    name: Conda compare
-    description: This hook compares your conda environment export to a saved version.
-    entry: trurl conda-compare
-    language: python
-    always_run: true
-    pass_filenames: false

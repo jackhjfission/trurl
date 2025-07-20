@@ -1,22 +1,9 @@
-[tool.isort]
-profile = "black"
-
-[tool.trurl]
-environment-file = "/home/jovyan/work/.devcontainer/base.yaml"
-
-[build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
-
-[project.scripts]
-trurl = "trurl.cli:main"
-
 [project]
 name = "trurl"
 version = "v0.2.0"
 description = "Another python package for traceable and reproducible data science."
 authors = [
-  { name = "Jack Coggins", email = "jackhjfission@gmail.com" },
+  { name = "Jack HJ Fission", email = "jackhjfission@gmail.com" },
 ]
 license = { file = "LICENSE" }
 readme = "README.md"
@@ -25,10 +12,30 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-requires-python = ">=3.7"
+requires-python = ">=3.12"
 dependencies = [
   "click==8.*",
 ]
 
+[project.scripts]
+trurl = "trurl.cli:main"
+
 [project.urls]
 "Homepage" = "https://github.com/jackhjfission/trurl"
+
+[tool.mypy]
+python_executable = "/home/klapaucius/.cache/pypoetry/virtualenvs/trurl-Svf77lXO-py3.12/bin/python"
+
+[tool.isort]
+profile = "black"
+
+# ignore unused imports in __init__.py files
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.pytest.ini_options]
+testpaths = "tests"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
