@@ -50,6 +50,10 @@ jobs:
       run: |
         pipx install pre-commit
 
+    - name: Install mypy with pipx
+      run: |
+        pipx install mypy
+
     - name: Get Poetry Python interpreter
       id: poetry-python
       run: |
@@ -62,7 +66,7 @@ jobs:
 
     - name: Run mypy with correct interpreter
       run: |
-        poetry run mypy --python-executable="${{ steps.poetry-python.outputs.python-path }}" --strict trurl/
+        mypy --python-executable="${{ steps.poetry-python.outputs.python-path }}" --strict trurl/
 
     - name: Check if pre-commit hooks modified files
       run: |
